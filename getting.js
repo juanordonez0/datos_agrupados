@@ -25,9 +25,12 @@ list.forEach(e => {
     let xif = xi * e.frec;
     let xidifmedi = xi-media;
     let abs = Math.abs(xidifmedi);
-    let abssq = Math.pow(abs, 2)
+  
     let fabs = e.frec * abs;
-    let fabssq = e.frec * abssq;
+
+
+    let abssq = Math.pow(abs, 2);
+    let fabssq = e.frec * abssq.toFixed(2);
 
     //SUMATORIAS
     fsum += e.frec;
