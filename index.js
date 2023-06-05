@@ -37,6 +37,55 @@ function tryw(){
 }
 
 
+function leerJSON() {
+    const archivo = document.getElementById('archivoJSON').files[0];
+    const lector = new FileReader();
+
+    lector.onload = function(event) {
+      const contenido = event.target.result;
+      const datos = JSON.parse(contenido);
+      localStorage.setItem("list", JSON.stringify(datos));
+      console.log(datos);
+    };
+
+    lector.readAsText(archivo);
+
+
+ 
+
+    location.href = "resultado.html";
+  }
+
+
+
+function exportarJSON() {
+    for (let i = 0; i <= index;  i++){
+        list[i] = {
+            lim_inf: parseInt(document.getElementById(`lim_inf${i}`).value),
+            lim_sup: parseInt(document.getElementById(`lim_sup${i}`).value),
+            frec: parseInt(document.getElementById(`frec${i}`).value)
+        }
+    }
+    const objetoJSON = list;
+    const contenidoJSON = JSON.stringify(objetoJSON);
+    const archivo = new Blob([contenidoJSON], { type: 'application/json' });
+
+    const url = URL.createObjectURL(archivo);
+    const enlace = document.createElement('a');
+    enlace.href = url;
+    enlace.download = 'datos.json';
+    enlace.click();
+  }
+
+
+
+
+
+
+
+
+       
+
 
 
 
